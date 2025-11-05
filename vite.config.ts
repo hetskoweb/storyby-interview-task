@@ -7,10 +7,9 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      input: {
-        landing1: resolve(__dirname, 'src/landings/landing1/index.html'),
-      },
+      input: resolve(__dirname, 'src/landings/landing1/index.html'),
     },
+    outDir: 'dist',
   },
   server: {
     open: '/src/landings/landing1/index.html',
