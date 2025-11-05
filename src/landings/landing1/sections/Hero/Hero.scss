@@ -1,14 +1,10 @@
 @import './../../styles/mixins.scss';
 
 .hero {
-  padding-top: 60px;
+  padding-top: 11em;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-
-  @include lg {
-    padding-top: 110px;
-  }
 
   &--visible {
     opacity: 1;
