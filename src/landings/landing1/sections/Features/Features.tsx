@@ -9,8 +9,23 @@ export const Features = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement | null>(null);
   const [cardsVisible, setCardsVisible] = useState(false);
+  const getThreshold = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1024) {
+      return 0.8;
+    }
+
+    if (width >= 768) {
+      return 0.4;
+    };
+
+    return 0.3;
+  };
 
   useEffect(() => {
+    if (!textRef.current) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -18,14 +33,12 @@ export const Features = () => {
           observer.disconnect();
         }
       },
-      { threshold: 1 }
+      { threshold: getThreshold() }
     );
 
-    if (textRef.current) observer.observe(textRef.current);
-
+    observer.observe(textRef.current);
     return () => observer.disconnect();
   }, []);
-
 
   useEffect(() => {
     if (!cardsRef.current) return;
@@ -37,7 +50,7 @@ export const Features = () => {
           observer.disconnect();
         }
       },
-      { threshold: 1 }
+      { threshold: getThreshold() }
     );
 
     observer.observe(cardsRef.current);
@@ -47,12 +60,12 @@ export const Features = () => {
   return (
     <section className="features">
       <div className="container">
-        <div ref={textRef} className="features__text-wrapper">
+        <div ref={textRef} className="features__text">
           <div className={`badge text-appear ${textVisible ? 'text-appear-active' : ''}`}>Statistics</div>
           <h2 className={`section-title text-appear ${textVisible ? 'text-appear-active' : ''}`}>
             Performance Highlights of Alter
           </h2>
-          <div className={`features__text text-appear ${textVisible ? 'text-appear-active' : ''}`}>
+          <div className={`section-text text-appear ${textVisible ? 'text-appear-active' : ''}`}>
             Our platform delivers measurable results, streamlining operations and boosting engagement with every interaction. See how Subway transforms your workflows and drives real, sustainable growth.
           </div>
         </div>

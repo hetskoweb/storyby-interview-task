@@ -4,6 +4,7 @@ import { Header } from './sections/Header'
 import { Sidebar } from './sections/Sidebar'
 import { Hero } from './sections/Hero';
 import { Features } from './sections/Features';
+import { Testimonals } from './sections/Testimonals';
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -17,6 +18,7 @@ function App() {
           <main className="main">
             <Hero />
             <Features />
+            <Testimonals />
           </main>
         </div>
       </div>

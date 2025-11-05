@@ -2,25 +2,13 @@
 
 .features {
   padding-top: 70px;
-  padding-bottom: 100px;
 
   @include md {
     padding-top: 140px;
   }
 
   &__text {
-    color: #1f201d;
     text-align: center;
-    max-width: 580px;
-    margin: 16px auto 0;
-
-    @include md {
-      font-size: 18px;
-    }
-
-    &-wrapper {
-      text-align: center;
-    }
   }
 
   &__cards {
@@ -81,15 +69,4 @@
     color: #1f201d;
     font-size: 18px;
   }
-}
-
-.text-appear {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.text-appear.text-appear-active {
-  opacity: 1;
-  transform: translateY(0);
 }
