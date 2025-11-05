@@ -7,17 +7,13 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      input: resolve(__dirname, 'src/landings/landing1/index.html'),
-      output: {
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash][extname]',
+      input: {
+        landing1: resolve(__dirname, 'src/landing1/index.html'),
       },
     },
     outDir: 'dist',
-    emptyOutDir: true,
   },
   server: {
-    open: '/src/landings/landing1/index.html',
+    open: '/src/landing1/index.html',
   },
 });
