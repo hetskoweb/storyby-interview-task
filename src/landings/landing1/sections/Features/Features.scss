@@ -1,0 +1,72 @@
+@import './../../styles/mixins.scss';
+
+.features {
+  padding-top: 70px;
+
+  @include md {
+    padding-top: 140px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 24px;
+    margin-top: 60px;
+    flex-direction: column;
+
+    @include md {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    @include lg {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.card {
+  background: #fff8f4;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  text-align: center;
+  border-radius: 16px;
+  box-sizing: border-box;
+
+  @include md {
+    width: calc(50% - 12px);
+  }
+
+  @include lg {
+    width: initial;
+  }
+
+  &__image {
+
+    img {
+      height: 200px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    color: #181a18;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__text {
+    color: #1f201d;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,53 @@
+@import './../../../styles/mixins.scss';
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include sm {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__input {
+    width: 100%;
+    color: #9ca3af;
+    background: #ffffff14;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding-left: 16px;
+    font-size: 14px;
+    box-sizing: border-box;
+
+    @include sm {
+      width: initial;
+    }
+  }
+
+  &__button {
+    padding: 14px 24px;
+    background: #ff532e;
+    border: 1px solid #ff532e;
+    color: #edeae9;
+    border-radius: 8px;
+    height: 40px;
+    box-sizing: border-box;
+    font-weight: 500;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #ff532e;
+      background-color: transparent;
+      color: #eef2f6;
+    }
+  }
+}

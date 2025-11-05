@@ -1,0 +1,107 @@
+@import './../../styles/mixins.scss';
+
+.testimonals {
+  padding-top: 70px;
+  padding-bottom: 100px;
+  overflow-x: hidden;
+
+  @include md {
+    padding-top: 140px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+
+  &__wrapper {
+    margin-top: 48px;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+  }
+}
+
+.testimonal {
+  width: 280px;
+  max-width: 280px;
+  padding: 32px;
+  background-image: linear-gradient(#f5f7f9, #fcfcfd);
+  border: 1px solid #ededed;
+  border-radius: 20px;
+
+  @include md {
+    width: 450px;
+    max-width: 450px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__image {
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+    }
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 150%;
+
+    @include md {
+      font-size: 20px;
+    }
+  }
+
+  &__position {
+    color: #bd3406;
+    font-size: 16px;
+    line-height: 170%;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 160%;
+    margin-top: 20px;
+
+    @include md {
+      font-size: 18px;
+    }
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
