@@ -12,11 +12,11 @@ body {
 }
 
 .main-title {
+  margin: 0;
   color: #181a18;
   font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
-  margin: 0;
 
   @include sm {
     font-size: 42px;
@@ -40,4 +40,35 @@ body {
       display: block;
     }
   }
+}
+
+.section-title {
+  margin: 0;
+  color: #181a18;
+  letter-spacing: .66px;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 16px;
+  text-align: center;
+
+  @include md {
+    font-size: 32px;
+  }
+
+  @include lg {
+    font-size: 45px;
+  }
+}
+
+.badge {
+  background-image: linear-gradient(#ffece1, #f7fbf6);
+  padding: 8px 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  letter-spacing: .08px;
+  line-height: 1.5;
+  margin: 0 auto;
+  font-weight: 500;
 }

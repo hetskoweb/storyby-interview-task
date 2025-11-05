@@ -1,10 +1,14 @@
 @import './../../styles/mixins.scss';
 
 .hero {
-  padding-top: 11em;
+  padding-top: 10em;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
+
+  @include lg {
+    padding-top: 13em;
+  }
 
   &--visible {
     opacity: 1;
@@ -23,6 +27,7 @@
 
   &__col {
     flex: 1;
+    overflow: hidden;
 
     &:nth-child(2) {
       padding-top: 60px;
@@ -164,4 +169,16 @@
 
 .fade-out {
   opacity: 0;
+}
+
+.title-word {
+  opacity: 0;
+  transform: translateY(10px);
+  display: inline-block;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
