@@ -5,6 +5,7 @@ import { Sidebar } from './sections/Sidebar'
 import { Hero } from './sections/Hero';
 import { Features } from './sections/Features';
 import { Testimonals } from './sections/Testimonals';
+import { Footer } from './sections/Footer';
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -22,6 +23,7 @@ function App() {
           </main>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

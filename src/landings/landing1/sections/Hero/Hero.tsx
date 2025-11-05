@@ -6,17 +6,57 @@ import ClientPhotoThird from './../../img/client-photo3.webp';
 import ClientPhotoFourth from './../../img/client-photo4.webp';
 import ClientPhotoFifth from './../../img/client-photo5.webp';
 import StarIcon from './../../img/star-icon.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+declare global {
+  interface Window {
+    fbq?: (command: 'track' | 'init' | 'consent', eventName?: string, params?: Record<string, unknown>) => void;
+  }
+}
 
 export const Hero = () => {
   const [visible, setVisible] = useState(false);
   const [scale, setScale] = useState(1);
-  const words = ['Emotional', 'Platform', 'Work'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [fade, setFade] = useState(true)
 
+  const words = ['Emotional', 'Platform', 'Work'];
+  const heroRef = useRef(null);
+
+  const getThreshold = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1024) {
+      return 0.7;
+    }
+
+    if (width >= 768) {
+      return 0.4;
+    };
+
+    return 0.3;
+  };
+
   useEffect(() => {
-    setVisible(true);
+    const target = heroRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: getThreshold(),
+      }
+    );
+
+    if (target) observer.observe(target);
+    return () => {
+      if (target) observer.unobserve(target);
+    };
   }, []);
 
   useEffect(() => {
@@ -41,10 +81,21 @@ export const Hero = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
+
+  const handleLeadEvent = () => {
+    const fbq = window.fbq;
+
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+      console.log('✅ Facebook Pixel Lead event sent');
+    } else {
+      console.log('⚙️ Simulated Lead event (no Pixel connected)');
+    }
+  };
 
   return (
-    <section className={`hero ${visible ? 'hero--visible' : ''}`}>
+    <section ref={heroRef} className={`hero ${visible ? 'hero--visible' : ''}`}>
       <div className="container">
         <div className="hero__wrapper">
           <div className="hero__col">
@@ -97,10 +148,10 @@ export const Hero = () => {
             </div>
             <div className="hero__btns">
               <div className="hero__btn hero__btn--orange">
-                <a href="#">Get started</a>
+                <a href="#" onClick={handleLeadEvent}>Get started</a>
               </div>
               <div className="hero__btn hero__btn--transparent">
-                <a href="#">Start free trial</a>
+                <a href="#" onClick={handleLeadEvent}>Start free trial</a>
               </div>
             </div>
           </div>
