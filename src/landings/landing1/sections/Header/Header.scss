@@ -1,0 +1,119 @@
+@import './../../styles/mixins.scss';
+
+.header {
+  margin-top: 36px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #323232;
+    border-radius: 12px;
+    height: 64px;
+    padding: .5em 1em;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    display: flex;
+    width: 100%;
+    max-width: 80px;
+
+    @include sm {
+      max-width: 120px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    display: none;
+
+    @include lg {
+      display: block;
+    }
+
+    a {
+      width: 140px;
+      height: 44px;
+      border: 1px solid #ff532e;
+      background: #ff532e;
+      color: #dfe8e6;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 10px;
+
+      &:hover {
+        border-color: #ff532e;
+        background: #bd3406;
+      }
+    }
+  }
+
+  &__burger {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff532e;
+    border-radius: 10px;
+
+    @include sm {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include lg {
+      display: none;
+    }
+
+    img {
+      width: 17px;
+      height: 17px;
+      filter: brightness(0) invert(1);
+
+      @include sm {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+.menu {
+  display: none;
+
+  @include lg {
+    display: block;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__item {
+
+    a {
+      color: #dfe8e6;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #ff532e;
+      }
+    }
+  }
+}
