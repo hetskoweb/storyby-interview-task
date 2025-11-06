@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const createLandingConfig = (landingName) => {
+const createLandingConfig = landingName => {
   if (typeof landingName !== 'string' || !landingName) {
     throw new Error(`[createLandingConfig] очікував рядок, але отримав: ${landingName}`);
   }
@@ -26,15 +26,14 @@ const createLandingConfig = (landingName) => {
           assetFileNames: `assets/[name]-[hash].[ext]`,
           chunkFileNames: `assets/[name]-[hash].js`,
           entryFileNames: `assets/[name]-[hash].js`,
-        }
+        },
       },
       emptyOutDir: true,
     },
   });
-}
+};
 
-export default (configArg) => {
-
+export default configArg => {
   if (typeof configArg === 'string') {
     return createLandingConfig(configArg);
   }

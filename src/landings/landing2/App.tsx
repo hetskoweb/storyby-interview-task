@@ -1,10 +1,5 @@
 function App() {
-
-  return (
-    <div className="app">
-      landing2
-    </div>
-  )
+  return <div className="app">landing2</div>;
 }
 
-export default App
+export default App;

@@ -14,7 +14,7 @@ export const useVisibility = (ref: RefObject<HTMLElement | null>, threshold: num
           observer.disconnect();
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(target);

@@ -15,7 +15,11 @@ import { getThreshold } from '../../constants/layout';
 
 declare global {
   interface Window {
-    fbq?: (command: 'track' | 'init' | 'consent', eventName?: string, params?: Record<string, unknown>) => void;
+    fbq?: (
+      command: 'track' | 'init' | 'consent',
+      eventName?: string,
+      params?: Record<string, unknown>,
+    ) => void;
   }
 }
 
@@ -78,23 +82,30 @@ export const Hero = () => {
                     <img src={StarIcon} alt="star-icon" />
                   </div>
                 </div>
-                <div className="hero__quantity-text">
-                  1M+ Happy Clients
-                </div>
+                <div className="hero__quantity-text">1M+ Happy Clients</div>
               </div>
             </div>
             <h1 className="main-title">
-              Reclaim Lost Revenue <br /> with AI-Powered <br /> <span className={`highlight ${fade ? 'fade-in' : 'fade-out'}`}>{words[currentWordIndex]}</span>
+              Reclaim Lost Revenue <br /> with AI-Powered <br />{' '}
+              <span className={`highlight ${fade ? 'fade-in' : 'fade-out'}`}>
+                {words[currentWordIndex]}
+              </span>
             </h1>
             <div className="hero__text">
-              Boost your revenue by up to 23% as our AI agents proactively connect with potential customers through personalized SMS and voice calls, converting interest into action seamlessly.
+              Boost your revenue by up to 23% as our AI agents proactively connect with potential
+              customers through personalized SMS and voice calls, converting interest into action
+              seamlessly.
             </div>
             <div className="hero__btns">
               <div className="hero__btn hero__btn--orange">
-                <a href="#" onClick={handleLeadEvent}>Get started</a>
+                <a href="#" onClick={handleLeadEvent}>
+                  Get started
+                </a>
               </div>
               <div className="hero__btn hero__btn--transparent">
-                <a href="#" onClick={handleLeadEvent}>Start free trial</a>
+                <a href="#" onClick={handleLeadEvent}>
+                  Start free trial
+                </a>
               </div>
             </div>
           </div>

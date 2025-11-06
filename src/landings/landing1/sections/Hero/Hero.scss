@@ -4,7 +4,9 @@
   padding-top: 10em;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 
   @include lg {
     padding-top: 13em;
@@ -86,7 +88,6 @@
   }
 
   &__quantity {
-
     &-text {
       font-size: 13px;
       margin-top: 4px;
@@ -111,7 +112,6 @@
   }
 
   &__btn {
-
     a {
       display: flex;
       align-items: center;
@@ -126,7 +126,6 @@
     }
 
     &--orange {
-
       a {
         background: #ff532e;
 
@@ -138,7 +137,6 @@
     }
 
     &--transparent {
-
       a {
         background-image: linear-gradient(#f8f6ff, #fff1ea);
         color: #181a18;
@@ -162,7 +160,6 @@
   color: #fff;
 }
 
-
 .fade-in {
   opacity: 1;
 }
@@ -175,7 +172,9 @@
   opacity: 0;
   transform: translateY(10px);
   display: inline-block;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 
   &.fade-in {
     opacity: 1;

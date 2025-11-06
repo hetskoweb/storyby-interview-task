@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import './SubscribeForm.scss';
 
 export const SubscribeForm = () => {
@@ -19,7 +19,7 @@ export const SubscribeForm = () => {
         className="subscribe-form__input"
         placeholder="Your email address"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         required
       />
       <button type="submit" className="subscribe-form__button">

@@ -24,9 +24,16 @@ export const Testimonals = () => {
     <section className="testimonals">
       <div className="container">
         <div ref={textRef} className="testimonals__text">
-          <div className={`badge text-appear ${textVisible ? 'text-appear-active' : ''}`}>Testimonal</div>
-          <h2 className={`section-title text-appear ${textVisible ? 'text-appear-active' : ''}`}>Just hear what they're saying about us</h2>
-          <div className={`section-text text-appear ${textVisible ? 'text-appear-active' : ''}`}>Discover how Subway's AI-driven automation has recovered lost sales, boosted conversions, and simplified customer engagement for eCommerce brands.</div>
+          <div className={`badge text-appear ${textVisible ? 'text-appear-active' : ''}`}>
+            Testimonal
+          </div>
+          <h2 className={`section-title text-appear ${textVisible ? 'text-appear-active' : ''}`}>
+            Just hear what they're saying about us
+          </h2>
+          <div className={`section-text text-appear ${textVisible ? 'text-appear-active' : ''}`}>
+            Discover how Subway's AI-driven automation has recovered lost sales, boosted
+            conversions, and simplified customer engagement for eCommerce brands.
+          </div>
         </div>
         <div className="testimonals__wrapper">
           <div className="testimonals__row" ref={rowRef1}>

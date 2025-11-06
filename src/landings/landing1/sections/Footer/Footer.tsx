@@ -21,7 +21,8 @@ export const Footer = () => {
               <img src={SiteLogo} alt="site-logo" />
             </div>
             <div className="footer__text">
-              Deliver instant, human-like support with our AI chatbot—built to engage, resolve, and scale with your startup.
+              Deliver instant, human-like support with our AI chatbot—built to engage, resolve, and
+              scale with your startup.
             </div>
             <SubscribeForm />
             <div className="footer__socials">

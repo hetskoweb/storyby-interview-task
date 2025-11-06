@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import './App.scss'
-import { Header } from './sections/Header'
-import { Sidebar } from './sections/Sidebar'
+import { Header } from './sections/Header';
+import { Sidebar } from './sections/Sidebar';
 import { Hero } from './sections/Hero';
 import { Features } from './sections/Features';
 import { Testimonals } from './sections/Testimonals';
@@ -25,7 +24,7 @@ function App() {
       </div>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
