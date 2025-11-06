@@ -27,8 +27,8 @@ Experience the live website: [Task Demo](https://hetskoweb.github.io/storyby-int
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/hetskoweb/product_catalog.git
-cd product_catalog
+git clone https://github.com/hetskoweb/storyby-interview-task.git
+cd storyby-interview-task
 ```
 
 2. **Install dependencies:**
