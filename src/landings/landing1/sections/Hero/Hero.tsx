@@ -6,7 +6,12 @@ import ClientPhotoThird from './../../img/client-photo3.webp';
 import ClientPhotoFourth from './../../img/client-photo4.webp';
 import ClientPhotoFifth from './../../img/client-photo5.webp';
 import StarIcon from './../../img/star-icon.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { words } from '../../constants/words';
+import { useRotatingWords } from '../../hooks/useRotatingWords';
+import { useScrollScale } from '../../hooks/useScrollScale';
+import { useVisibility } from '../../hooks/useVisibility';
+import { getThreshold } from '../../constants/layout';
 
 declare global {
   interface Window {
@@ -15,73 +20,11 @@ declare global {
 }
 
 export const Hero = () => {
-  const [visible, setVisible] = useState(false);
-  const [scale, setScale] = useState(1);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [fade, setFade] = useState(true)
+  const heroRef = useRef<HTMLElement>(null);
 
-  const words = ['Emotional', 'Platform', 'Work'];
-  const heroRef = useRef(null);
-
-  const getThreshold = () => {
-    const width = window.innerWidth;
-
-    if (width >= 1024) {
-      return 0.7;
-    }
-
-    if (width >= 768) {
-      return 0.4;
-    };
-
-    return 0.3;
-  };
-
-  useEffect(() => {
-    const target = heroRef.current;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: getThreshold(),
-      }
-    );
-
-    if (target) observer.observe(target);
-    return () => {
-      if (target) observer.unobserve(target);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const newScale = 1 + scrollTop / 2000;
-      setScale(newScale > 1.3 ? 1.3 : newScale);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
-
-      setTimeout(() => {
-        setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        setFade(true);
-      }, 500);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [words.length]);
+  const visible = useVisibility(heroRef, getThreshold(window.innerWidth));
+  const scale = useScrollScale();
+  const { currentWordIndex, fade } = useRotatingWords(words);
 
   const handleLeadEvent = () => {
     const fbq = window.fbq;

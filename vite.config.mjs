@@ -6,7 +6,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default (landingName) => {
+const createLandingConfig = (landingName) => {
+  if (typeof landingName !== 'string' || !landingName) {
+    throw new Error(`[createLandingConfig] очікував рядок, але отримав: ${landingName}`);
+  }
+
   const landingRoot = path.resolve(__dirname, `src/landings/${landingName}`);
 
   return defineConfig({
@@ -28,3 +32,18 @@ export default (landingName) => {
     },
   });
 }
+
+export default (configArg) => {
+
+  if (typeof configArg === 'string') {
+    return createLandingConfig(configArg);
+  }
+
+  const { command } = configArg;
+
+  if (command === 'serve') {
+    const landingName = process.env.VITE_LANDING_NAME;
+
+    return createLandingConfig(landingName);
+  }
+};

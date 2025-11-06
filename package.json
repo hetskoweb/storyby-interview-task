@@ -10,7 +10,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "dev:landing1": "cross-env VITE_LANDING_NAME=landing1 vite",
+    "dev:landing2": "cross-env VITE_LANDING_NAME=landing2 vite",
+    "dev:landing3": "cross-env VITE_LANDING_NAME=landing3 vite"
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
@@ -25,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
     "@vitejs/plugin-react": "^5.0.4",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",

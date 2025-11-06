@@ -4,50 +4,13 @@ import SiteLogo from './../../img/alter-logo.avif';
 import InstagramIcon from './../../img/instagram-icon.svg';
 import FacebookIcon from './../../img/facebook-icon.svg';
 import TwitterIcon from './../../img/twitter-icon.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { getThreshold } from '../../constants/layout';
+import { useVisibility } from '../../hooks/useVisibility';
 
 export const Footer = () => {
-  const [visible, setVisible] = useState(false);
-  const footerRef = useRef(null);
-  const getThreshold = () => {
-    const width = window.innerWidth;
-
-    if (width >= 1024) {
-      return 0.5;
-    }
-
-    if (width >= 768) {
-      return 0.3;
-    };
-
-    return 0.2;
-  };
-
-  useEffect(() => {
-    const target = footerRef.current;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: getThreshold(),
-      }
-    );
-
-    if (target) {
-      observer.observe(target);
-    }
-
-    return () => {
-      if (target) observer.unobserve(target);
-    };
-  }, []);
+  const footerRef = useRef<HTMLElement>(null);
+  const visible = useVisibility(footerRef, getThreshold(window.innerWidth));
 
   return (
     <footer className="footer" ref={footerRef}>

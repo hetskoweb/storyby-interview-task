@@ -1,50 +1,13 @@
 import './Testimonals.scss';
-import ClientPhotoFirst from './../../img/client-photo1.webp';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useVisibility } from '../../hooks/useVisibility';
+import { testimonials } from '../../constants/testimonals';
 
 export const Testimonals = () => {
   const rowRef1 = useRef<HTMLDivElement>(null);
   const rowRef2 = useRef<HTMLDivElement>(null);
-  const [textVisible, setTextVisible] = useState(false);
   const textRef = useRef<HTMLDivElement | null>(null);
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'John Doe',
-      position: 'Product Manager',
-      text: 'I actually wanted to learn more than what was taught. I wanted to at least understand some of the basics. Then I bought UI / UX design course & completed the whole course.',
-      image: ClientPhotoFirst,
-    },
-    {
-      id: 2,
-      name: 'John Doe',
-      position: 'Product Manager',
-      text: 'I actually wanted to learn more than what was taught. I wanted to at least understand some of the basics. Then I bought UI / UX design course & completed the whole course.',
-      image: ClientPhotoFirst,
-    },
-    {
-      id: 3,
-      name: 'John Doe',
-      position: 'Product Manager',
-      text: 'I actually wanted to learn more than what was taught. I wanted to at least understand some of the basics. Then I bought UI / UX design course & completed the whole course.',
-      image: ClientPhotoFirst,
-    },
-    {
-      id: 4,
-      name: 'John Doe',
-      position: 'Product Manager',
-      text: 'I actually wanted to learn more than what was taught. I wanted to at least understand some of the basics. Then I bought UI / UX design course & completed the whole course.',
-      image: ClientPhotoFirst,
-    },
-    {
-      id: 5,
-      name: 'John Doe',
-      position: 'Product Manager',
-      text: 'I actually wanted to learn more than what was taught. I wanted to at least understand some of the basics. Then I bought UI / UX design course & completed the whole course.',
-      image: ClientPhotoFirst,
-    },
-  ];
+  const textVisible = useVisibility(textRef, 1);
 
   useEffect(() => {
     if (rowRef1.current) {
@@ -55,22 +18,6 @@ export const Testimonals = () => {
       const width2 = rowRef2.current.scrollWidth / 2;
       rowRef2.current.style.animation = `scroll-right ${width2 / 50}s linear infinite`;
     }
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTextVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 1 }
-    );
-
-    if (textRef.current) observer.observe(textRef.current);
-
-    return () => observer.disconnect();
   }, []);
 
   return (

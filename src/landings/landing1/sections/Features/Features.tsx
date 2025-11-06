@@ -2,60 +2,16 @@ import './Features.scss';
 import MessagesImage from './../../img/messages.avif';
 import PhoneSearch from './../../img/phone-search.avif';
 import InboxImage from './../../img/inbox.avif';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { getThreshold } from '../../constants/layout';
+import { useVisibility } from '../../hooks/useVisibility';
 
 export const Features = () => {
-  const [textVisible, setTextVisible] = useState(false);
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<HTMLDivElement | null>(null);
-  const [cardsVisible, setCardsVisible] = useState(false);
-  const getThreshold = () => {
-    const width = window.innerWidth;
+  const textRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
-    if (width >= 1024) {
-      return 0.8;
-    }
-
-    if (width >= 768) {
-      return 0.4;
-    };
-
-    return 0.3;
-  };
-
-  useEffect(() => {
-    if (!textRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTextVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: getThreshold() }
-    );
-
-    observer.observe(textRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!cardsRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setCardsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: getThreshold() }
-    );
-
-    observer.observe(cardsRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const textVisible = useVisibility(textRef, getThreshold(window.innerWidth));
+  const cardsVisible = useVisibility(cardsRef, getThreshold(window.innerWidth));
 
   return (
     <section className="features">
