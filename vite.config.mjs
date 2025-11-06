@@ -10,7 +10,7 @@ export default (landingName) => {
   const landingRoot = path.resolve(__dirname, `src/landings/${landingName}`);
 
   return defineConfig({
-    base: '/storyby-interview-task/',
+    base: './',
     root: landingRoot,
 
     plugins: [react()],
