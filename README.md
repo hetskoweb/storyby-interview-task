@@ -5,6 +5,12 @@ The goal was to design an architecture that allows building **hundreds of market
 
 ---
 
+## Live demo
+
+Experience the live website: [Task Demo](https://hetskoweb.github.io/storyby-interview-task/landing1)
+
+---
+
 ## 🚀 Technologies
 
 - **React + TypeScript** – component-based architecture  
